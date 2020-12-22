@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row center-xs">
+        <button (click)="isGrid = !isGrid">
+      {{ isGrid ? "List View" : "Grid View" }}
+    </button>
+    </div>
+
+    <div class="products">
+        <div class="row" [ngClass]="{ grid: isGrid }" *ngFor="let product of products">
+            <div class="col-md-2 hidden-xs">
+                <div class="block">
+                    <div class="number">{{ product.productId }}</div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-lg-2">
+                <div class="block">
+                    <img class="img" src="{{ product.imagePath }}" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-lg-8">
+                <div class="block left">
+                    <div class="content">
+                        <div class="product">
+                            <div class="caption">
+                                <div class="title">{{ product.title }}</div>
+                                <div class="icons hidden-xs">
+                                    <div class="ig"></div>
+                                    <div class="round-item date-added">2 days ago</div>
+                                    <div class="round-item dropship">Dropship</div>
+                                    <div class="round-item broken">
+                                        <img src="/assets/svgs/broken.svg" />
+                                    </div>
+                                    <div class="round-item visibility">
+                                        <i class="icon-eye"></i>
+                                    </div>
+                                    <div class="round-item setting">
+                                        <img src="/assets/svgs/settings.svg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="statistics">
+                                <div class="trophy visible-xs"><i class="icon-trophy"></i>233</div>
+                                <div class="orders"><i class="icon-pin"></i>{{product.tags}}</div>
+                                <div class="rating">
+                                    <i class="icon-star"></i> {{ product.rating }}
+                                </div>
+                                <div class="score">
+                                    <i class="icon-shield"></i> {{ product.percentage }}%
+                                </div>
+                                <div class="epacket" *ngIf="product.ePacket">
+                                    <i class="icon-epack"></i> ePack
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="price-actions">
+                            <div class="price">${{ product.price }}</div>
+                            <div class="actions hidden-xs">
+                                <div class="view">
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-eye"></i>
+                                    </a>
+                                </div>
+                                <div class="like">
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-heart"></i>
+                                    </a>
+                                </div>
+                                <div class="add">
+                                    <a href="javascript:void(0)">
+                                        <i class="icon-add"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
