@@ -8,9 +8,9 @@ export class ProductService {
   constructor(private http: HttpClient) {}
   public getAllProducts(): Observable<Product[]> {
     return new Observable<any[]>((observer) => {
-      this.http.get<any[]>('/api/products').subscribe(
+      this.http.get<any[]>('/assets/db.json').subscribe(
         (data: any) => {
-          observer.next(data);
+          observer.next(data.products);
           observer.complete();
         },
         (err: any) => {
