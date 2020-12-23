@@ -19,4 +19,8 @@ export class AppComponent implements OnInit {
       this.products = products;
     });
   }
+
+  public onProductClicked(product: Product): void {
+    alert(`Product with Id: ${product.productId} clicked.`);
+  }
 }

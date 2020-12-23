@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/Product';
 
 @Component({
@@ -8,12 +8,17 @@ import { Product } from '../models/Product';
 })
 export class ProductsListGridComponent implements OnInit {
   @Input() public products: Product[];
+  @Output() public productClicked = new EventEmitter<Product>();
 
   public isGrid = false;
 
   public constructor() {}
 
   public ngOnInit(): void {}
+
+  public onTitleClicked(product: Product): void {
+    this.productClicked.emit(product);
+  }
 
   public timeSince(date: Date): string {
     const now = new Date();

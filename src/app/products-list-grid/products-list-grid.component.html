@@ -22,7 +22,7 @@
                     <div class="content">
                         <div class="product">
                             <div class="caption">
-                                <div class="title">{{ product.title }}</div>
+                                <div class="title" (click)="onTitleClicked(product)">{{ product.title }}</div>
                                 <div class="icons hidden-xs">
                                     <div class="ig"></div>
                                     <div class="round-item date-added">2 days ago</div>
