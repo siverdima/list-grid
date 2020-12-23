@@ -1,3 +1,7 @@
-<div class="content">
+<div class="content" *ngIf="products$ | async as products">
     <app-products-list-grid [products]="products" (productClicked)="onProductClicked($event)"></app-products-list-grid>
+</div>
+
+<div *ngIf="errorMessage$ | async as errorMessage" class="alert-danger">
+    Error: {{ errorMessage?.message }}
 </div>

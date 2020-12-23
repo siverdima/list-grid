@@ -4,7 +4,7 @@
       {{ isGrid ? "List View" : "Grid View" }}
     </button>
     </div>
-
+    <br/>
     <div class="products">
         <div class="row" [ngClass]="{ grid: isGrid }" *ngFor="let product of products">
             <div class="col-md-2 hidden-xs">

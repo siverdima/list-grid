@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Product } from './models/Product';
-import { ProductService } from './services/product.service';
+import { State, getProducts, getError } from './state/product.reducer';
+import * as ProductActions from '../app/state/product.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +13,16 @@ import { ProductService } from './services/product.service';
 export class AppComponent implements OnInit {
   title = 'grid-list';
 
-  public products: Product[] = [];
+  errorMessage$: Observable<any>;
 
-  public constructor(private productService: ProductService) {}
+  products$: Observable<Product[]>;
+
+  public constructor(private store: Store<State>) {}
 
   public ngOnInit(): void {
-    this.productService.getAllProducts().subscribe((products) => {
-      this.products = products;
-    });
+    this.products$ = this.store.select(getProducts);
+    this.errorMessage$ = this.store.select(getError);
+    this.store.dispatch(ProductActions.loadProducts());
   }
 
   public onProductClicked(product: Product): void {
